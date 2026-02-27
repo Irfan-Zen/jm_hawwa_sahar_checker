@@ -1,0 +1,195 @@
+/* ===============================
+   GLOBAL BODY
+=================================*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #141e30, #243b55);
+}
+
+/* ===============================
+   MAIN CARD CONTAINER
+=================================*/
+.container {
+    width: 92%;
+    max-width: 480px;
+    padding: 28px;
+    border-radius: 25px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+    color: white;
+    animation: fadeIn 0.6s ease;
+}
+
+/* ===============================
+   HEADINGS
+=================================*/
+h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+h2 {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #bdefff;
+}
+
+h3 {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+/* ===============================
+   INPUT FIELDS
+=================================*/
+input[type="number"],
+input[type="text"],
+input[type="password"] {
+    width: 95%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+
+    background: rgba(255,255,255,0.9);
+    color: black;
+}
+
+/* ===============================
+   BUTTONS
+=================================*/
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 14px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+.reset-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+}
+
+/* ===============================
+   MESSAGES
+=================================*/
+.success {
+    color: #00ffae;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.error {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ===============================
+   TOKEN LIST
+=================================*/
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+ul li {
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+}
+/* Header Styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+    color: #00c6ff; /* Cyan gradient color for mosque name */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: #ffdd59; /* Golden color for feast */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+/* ===============================
+   LINKS
+=================================*/
+a {
+    color: #00c6ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   ANIMATIONS
+=================================*/
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   MOBILE IMPROVEMENTS
+=================================*/
+@media (max-width: 480px) {
+
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .container {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}

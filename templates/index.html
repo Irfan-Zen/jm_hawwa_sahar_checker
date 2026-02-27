@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sahar Feast - J.M. Hawwa Jumma Masjid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+<div class="overlay">
+<div class="container">
+
+    <h1>🕌 J.M. Hawwa Jumma Masjid</h1>
+    <h2>🌙 Sahar Food Feast Token System</h2>
+
+    <form method="POST">
+        <input type="number" name="token" placeholder="Enter Token Number" required>
+        <button type="submit" name="add">Add Token</button>
+    </form>
+
+    {% if message %}
+        {% if "successfully" in message %}
+            <p class="success">{{ message }}</p>
+        {% else %}
+            <p class="error">{{ message }}</p>
+        {% endif %}
+    {% endif %}
+
+    <hr>
+
+    <h3>Total People Served: {{ total }}</h3>
+
+    <form method="POST">
+        <button type="submit" name="show">View Entered Tokens</button>
+    </form>
+
+    {% if show_list %}
+    <ul>
+        {% for t in tokens %}
+            <li>{{ t }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if role == "admin" %}
+        <hr>
+        <h3>Pending Servant Approvals</h3>
+        {% for user in pending_users %}
+            <p>
+                {{ user[1] }}
+                <a href="/approve/{{ user[0] }}">Approve</a>
+            </p>
+        {% endfor %}
+
+        <form action="/reset" method="POST">
+            <button type="submit" class="reset-btn"
+                onclick="return confirm('Are you sure you want to reset all tokens?');">
+                Reset All Tokens
+            </button>
+        </form>
+    {% endif %}
+
+    <br>
+    <a href="/logout">Logout</a>
+
+</div>
+</div>
+</body>
+</html>
