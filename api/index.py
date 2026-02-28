@@ -35,10 +35,12 @@ def init_db():
     conn.close()
 
 
-init_db()
+
  
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    init_db()
+    
     error = ""
 
     if request.method == "POST":
