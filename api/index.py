@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.secret_key = "sahar_secret_key"
  
 def init_db():
-    conn = sqlite3.connect("tokens.db")
+    conn = sqlite3.connect("/tmp/tokens.db")
     c = conn.cursor()
  
     c.execute("""
@@ -45,7 +45,7 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        conn = sqlite3.connect("tokens.db")
+        conn = sqlite3.connect("/tmp/tokens.db")
         c = conn.cursor()
         c.execute("""
             SELECT id, role, approved FROM users
@@ -74,7 +74,7 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        conn = sqlite3.connect("tokens.db")
+        conn = sqlite3.connect("/tmp/tokens.db")
         c = conn.cursor()
 
         try:
@@ -102,7 +102,7 @@ def home():
     show_list = False
     tokens = []
 
-    conn = sqlite3.connect("tokens.db")
+    conn = sqlite3.connect("/tmp/tokens.db")
     c = conn.cursor()
 
     if request.method == "POST":
@@ -149,7 +149,7 @@ def approve(user_id):
     if session.get("role") != "admin":
         return redirect("/")
 
-    conn = sqlite3.connect("tokens.db")
+    conn = sqlite3.connect("/tmp/tokens.db")
     c = conn.cursor()
     c.execute("UPDATE users SET approved=1 WHERE id=?", (user_id,))
     conn.commit()
@@ -163,7 +163,7 @@ def reset():
     if session.get("role") != "admin":
         return redirect("/")
 
-    conn = sqlite3.connect("tokens.db")
+    conn = sqlite3.connect("/tmp/tokens.db")
     c = conn.cursor()
     c.execute("DELETE FROM tokens")
     conn.commit()
@@ -176,6 +176,4 @@ def logout():
     session.clear()
     return redirect("/login")
 
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+handler = app
